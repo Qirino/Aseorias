@@ -7,12 +7,15 @@ public class Personaje{
     protected int def;
     protected int spd;
     protected int lvl;
+    protected boolean vivo;
 
-    protected Personaje(int hp, int atk, int def, int spd){
+    protected Personaje(String nombre, int hp, int atk, int def, int spd){
         this.hp = hp;
         this.atk = atk;
         this.def = def;
         this.spd = spd;
+        this.nombre = nombre;
+        this.vivo = true;
     }
 
     //Gets
@@ -34,34 +37,34 @@ public class Personaje{
     public int getSpd() {
         return spd;
     }
-
-    //Sets
-    public void setAtk(int atk) {
-        this.atk = atk;
+    public boolean getVivo(){
+        return vivo;
     }
-    public void setDef(int def) {
-        this.def = def;
-    }
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public void setSpd(int spd) {
-        this.spd = spd;
-    }
-    protected void hacerDano(double porcentaje, int prob, Personaje rival){
-        if(Math.random() * 100 <= 30){
+    protected void tirarAtaque(double porcentaje, int prob, Personaje rival){
+        if(Math.random() * 100 >= prob){
             System.out.println(this.getNombre() + " ha fallado :c");
             return;
         }
-        int dano = (int)(this.getAtk()*1.5);
-        if(Math.random() * 100 <= 10) dano = (int)(dano * 1.5);
-        rival.hp -= dano; 
-        System.out.println("'pas...'\nLa vida de " + rival.getNombre() + " ahora es de " + rival.getHp());
+        int dano = (int)(this.getAtk()*porcentaje);
+        String msjcrit = "";
+        if ((int)(Math.random() * 100) < 7.5){
+            dano = (int)(dano * 1.5);
+            msjcrit = "(Ha sido golpe critico)";
+        } 
+        rival.hp -= dano * (rival.getDef() * 0.05); 
+        if(this.muerto(rival)){
+            return;
+        }
+        System.out.println("PAS...");
+        System.out.println("La vida de " + rival.getNombre() + " ahora es de " + rival.getHp() + msjcrit);
+    }
+
+    protected boolean muerto(Personaje rival){
+        if(rival.getHp() <= 0){
+            System.out.println(rival.getNombre() + " ha muerto");
+            rival.vivo = false;
+            return true;
+        }
+        return false;
     }
 }
