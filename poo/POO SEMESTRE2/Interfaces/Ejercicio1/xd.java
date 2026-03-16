@@ -8,6 +8,7 @@ public class xd{
         //juan.tirarHabilidad1(pancho);
         pancho.tirarHabilidad2(juan);
         juan.tirarHabilidad2(pancho);
+        pancho.tirarHabilidad2(juan);
         juan.tirarHabilidad2(pancho);
         juan.tirarHabilidad2(pancho);
         pancho.cubrirse();
