@@ -8,6 +8,7 @@ public class Personaje{
     protected int spd;
     protected int lvl;
     protected boolean vivo;
+    protected boolean cubierto;
 
     protected Personaje(String nombre, int hp, int atk, int def, int spd){
         this.hp = hp;
@@ -16,6 +17,7 @@ public class Personaje{
         this.spd = spd;
         this.nombre = nombre;
         this.vivo = true;
+        this.cubierto = false;
     }
 
     //Gets
@@ -40,7 +42,15 @@ public class Personaje{
     public boolean getVivo(){
         return vivo;
     }
-    protected void tirarAtaque(double porcentaje, int prob, Personaje rival){
+    public boolean getCubierto(){
+        return this.cubierto;
+    }
+    protected void ataqueDano(double porcentaje, int prob, Personaje rival){
+        if(rival.getCubierto()){
+            System.out.println(rival.getNombre() + " se ha protegido");
+            rival.cubierto = false;
+            return;
+        }
         if(Math.random() * 100 >= prob){
             System.out.println(this.getNombre() + " ha fallado :c");
             return;
@@ -52,19 +62,12 @@ public class Personaje{
             msjcrit = "(Ha sido golpe critico)";
         } 
         rival.hp -= dano * (rival.getDef() * 0.05); 
-        if(this.muerto(rival)){
+        if(rival.getHp() <= 0){
+            System.out.println(rival.getNombre() + " ha muerto...");
+            rival.vivo = false;
             return;
         }
         System.out.println("PAS...");
         System.out.println("La vida de " + rival.getNombre() + " ahora es de " + rival.getHp() + msjcrit);
-    }
-
-    protected boolean muerto(Personaje rival){
-        if(rival.getHp() <= 0){
-            System.out.println(rival.getNombre() + " ha muerto");
-            rival.vivo = false;
-            return true;
-        }
-        return false;
     }
 }
