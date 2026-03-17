@@ -7,11 +7,18 @@ public class Movimiento implements MovimientoStrategy{
     protected Personaje usuario;
 
     public void tirarMovimiento(Personaje user, Personaje rival){
-        
     }
+    
     protected void fallarMov(int probabilidad){
         if((Math.random()*100) >= probabilidad){
             System.out.print(" pero fallo...");
         }
+    }
+    protected boolean rivalEstaMuerto(Personaje rival){
+        if(!rival.getVivo()){
+            System.out.println(rival.getNombre() + " ya esta muerto");
+            return true;
+        }
+        return false;
     }
 }

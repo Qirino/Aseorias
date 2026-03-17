@@ -1,12 +1,16 @@
 package Ejercicio2;
 
 public class Personaje {
+    protected DiccionarioMovimientos diccionario = new DiccionarioMovimientos(this);
     private String nombre;
     private int hp;
     private int atk;
     private int def;
     private boolean vivo;
     private boolean cubierto;
+    protected String mov1;
+    protected String mov2;
+    protected String mov3;
 
     Personaje(String nombre, int hp, int atk, int def){
         this.nombre = nombre;
@@ -42,6 +46,12 @@ public class Personaje {
         int danoTotal = dano * (int)(this.getDef()*0.05);
         this.hp = this.hp - danoTotal;
         System.out.println(this.nombre + " ha recibido " + danoTotal + " de dano total...");
+        if(this.hp <= 0){
+            this.vivo = false;
+            System.out.println(this.nombre + " ha muerto.");
+            return;
+        }
         System.out.println("Vida actual de " + this.nombre + ": " + this.hp);
     }
+
 }
