@@ -7,9 +7,9 @@ public class Combate {
 
         guerrero1.movimiento1(guerrero2);
         guerrero1.movimiento1(guerrero2);
-        guerrero1.movimiento2(guerrero2);
         guerrero1.movimiento1(guerrero2);
-        guerrero1.movimiento2(guerrero2);
+        guerrero1.movimiento1(guerrero2);
+        guerrero1.movimiento1(guerrero2);
 
     }
 }
