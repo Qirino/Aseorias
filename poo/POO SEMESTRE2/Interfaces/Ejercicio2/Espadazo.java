@@ -1,15 +1,14 @@
 package Ejercicio2;
 
-public class Golpe extends MovAtkFisico {
-    
-    public Golpe(Personaje usuario){
+public class Espadazo extends MovAtkFisico{
+    public Espadazo(Personaje usuario){
         this.usuario = usuario;
-        probabilidad = 95;
-        potencia = 60;
+        probabilidad = 85;
+        potencia = 80;
     }
     @Override
     public void tirarMovimiento(Personaje rival){
-        System.out.print(usuario.getNombre() + " ha usado golpe...");
+        System.out.print(usuario.getNombre() + " ha usado espadazo...");
         fallarMov(probabilidad);
         int dano = hacerDanoFisico(usuario, potencia);
         System.out.println();

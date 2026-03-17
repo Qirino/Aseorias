@@ -39,7 +39,7 @@ public class Personaje {
             System.out.println(this.nombre + " esta cubierto");
             return;
         }
-        int danoTotal = dano*(int)(this.getDef()*0.05);
+        int danoTotal = dano * (int)(this.getDef()*0.05);
         this.hp = this.hp - danoTotal;
         System.out.println(this.nombre + " ha recibido " + danoTotal + " de dano total...");
         System.out.println("Vida actual de " + this.nombre + ": " + this.hp);
