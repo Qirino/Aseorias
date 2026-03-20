@@ -16,9 +16,9 @@ public class MovAtkFisico extends Movimiento{
     }
 
     protected int hacerDanoFisico(Personaje usuario, int potencia){
-        int dano = (int)(potencia * 0.001 * usuario.getValorAtk());
+        int dano = (int)(potencia * 0.0015 * usuario.getValorAtk());
         if(Math.random()*100 < 7.5){
-            dano = (int)(dano * 1.8);
+            dano = (int)(dano * 1.7);
             System.out.print(" ha sido golpe critico");
         }
         return dano;

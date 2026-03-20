@@ -20,7 +20,10 @@ public abstract class Personaje {
         this.cubierto = false;
         stats = new HashMap<>();
         stats.put("ATK", new Stat(atk, "ATK"));
-        stats.put("DEF", new Stat(def, "DEF"));
+        stats.put("DEF", new Stat(atk, "DEF"));
+        stats.put("SPATK", new Stat(def, "SPATK"));
+        stats.put("SPDEF", new Stat(def, "SPDEF"));
+        stats.put("SPD", new Stat(def, "SPD"));
     }
     public Map<String, Stat> getStats() {
         return stats;
@@ -71,7 +74,7 @@ public abstract class Personaje {
         System.out.println( "Que ataque quiere utilizar?");
         System.out.println(mov1 + "\n" + mov2 + "\n" + mov3 + "\n" + mov4 + "\n");
         Scanner sc = new Scanner(System.in);
-        String op = sc.nextLine().trim();
+        String op = sc.nextLine().trim().replace(" ", "");
         String mov = this.mov1;
         if(op.equalsIgnoreCase(mov1))mov = this.mov1;
         if(op.equalsIgnoreCase(mov2))mov = this.mov2;

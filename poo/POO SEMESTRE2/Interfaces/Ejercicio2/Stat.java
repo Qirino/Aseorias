@@ -26,7 +26,7 @@ public class Stat {
             System.out.println("No puede aumentar mas");
             return this.valor;
         }
-        this.valor = this.valor + (int)((valorMax - this.valor)* (muliplicador*0.1));
+        this.valor = this.valor + (int)((valorMax - this.valor)* (muliplicador*0.08));
         return this.valor;
     }
     public int disminuir(double muliplicador){
