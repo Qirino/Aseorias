@@ -13,6 +13,7 @@ public abstract class Personaje {
     protected String mov3;
     protected String mov4;
 
+    private static Scanner sc = new Scanner(System.in);
     Personaje(String nombre, int hp, int atk, int def){
         this.nombre = nombre;
         this.hp = hp;
@@ -73,7 +74,6 @@ public abstract class Personaje {
     public void movimiento(Personaje rival){
         System.out.println( "Que ataque quiere utilizar?");
         System.out.println(mov1 + "\n" + mov2 + "\n" + mov3 + "\n" + mov4 + "\n");
-        Scanner sc = new Scanner(System.in);
         String op = sc.nextLine().trim().replace(" ", "");
         String mov = this.mov1;
         if(op.equalsIgnoreCase(mov1))mov = this.mov1;
@@ -85,11 +85,9 @@ public abstract class Personaje {
     }
     public void setMov(){
         System.out.println("Que movimiento quiere cambiar?");
-        Scanner sc = new Scanner(System.in);
         String op = sc.nextLine();
         System.out.println("Que movimiento quiere agregar?");
         String key = sc.nextLine().trim();
-        sc.close();
         if(diccionario.containsKey(key) && ((diccionario.get(key).getClass() == (diccionario.get(this.mov1)).getClass()) || diccionario.get(key) instanceof MovStatsUser)) {
             if(op.equalsIgnoreCase(mov1))this.mov1 = diccionario.get(key).getNombreMovimiento();
             if(op.equalsIgnoreCase(mov2))this.mov2 = diccionario.get(key).getNombreMovimiento();

@@ -7,5 +7,11 @@ public class Main {
         do{
             combate.combateTurnos(combate);
         }while(combate.combateTurnos(combate) != null);
+
+        Combate combate2 = new Combate("Juancho", "Pancho");
+        combate2.getPersonaje1().setMov();
+        do{
+            combate2.combateTurnos(combate2);
+        }while(combate2.combateTurnos(combate2) != null);
     }
 }
