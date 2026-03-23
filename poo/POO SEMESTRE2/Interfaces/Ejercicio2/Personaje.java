@@ -87,7 +87,7 @@ public abstract class Personaje {
         System.out.println("Que movimiento quiere cambiar?");
         String op = sc.nextLine();
         System.out.println("Que movimiento quiere agregar?");
-        String key = sc.nextLine().trim();
+        String key = sc.nextLine().trim().replace(" ", "");
         if(diccionario.containsKey(key) && ((diccionario.get(key).getClass() == (diccionario.get(this.mov1)).getClass()) || diccionario.get(key) instanceof MovStatsUser)) {
             if(op.equalsIgnoreCase(mov1))this.mov1 = diccionario.get(key).getNombreMovimiento();
             if(op.equalsIgnoreCase(mov2))this.mov2 = diccionario.get(key).getNombreMovimiento();
